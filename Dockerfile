@@ -200,6 +200,9 @@ RUN set -ex; \
 
 RUN pip install supervisor -i http://pypi.douban.com/simple --trusted-host pypi.douban.com
 
+## INSTALL PYTHON MODULES SUPPORT EUREKA CLIENT DISCOVERY
+RUN pip3 install wasp-eureka asyncio -i http://pypi.douban.com/simple --trusted-host pypi.douban.com
+
 ## INSTALL NGINX 
 
 ENV NGINX_VERSION 1.14.0
