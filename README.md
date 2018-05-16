@@ -4,6 +4,8 @@
 
 至于为何PHP环境有Python，这里主要考虑到进程管理和到时候用Python 程序作为Eureka Client注册和续约服务。
 
+[Docker Registry doubleshit/lnpps](https://hub.docker.com/r/doubleshit/lnpps/)
+
 ## 环境
 
 - PHP：7.1
