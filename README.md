@@ -51,6 +51,3 @@ Supervisor
 EntryPoint启动脚本：`/start.sh` *主要用于运行supervisor，其它进程在supervisor里面配置*
 
 网站默认路径 `/var/www/html`
-
-## 使用例子
-
