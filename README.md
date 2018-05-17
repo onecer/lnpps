@@ -69,6 +69,8 @@ Pool Definitions /usr/local/etc/php-fpm.d/
 主配置：`/etc/supervisord.conf`
 
 进程配置：`/etc/supervisor.conf.d/` *建议一个单独的服务依赖进程都归并到一个文件*
+
+主程序：/usr/local/bin/supervisord
 ```
 
 `EntryPoint启动脚本`：
