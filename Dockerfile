@@ -339,15 +339,17 @@ RUN GPG_KEYS=B0F4253373F8F6F510D42178520A9993A1C052F8 \
 	&& ln -sf /dev/stdout /var/log/nginx/access.log \
 	&& ln -sf /dev/stderr /var/log/nginx/error.log
 
-## INSTALL COMPOSER
+## INSTALL COMPOSER && PHP EXT
 RUN php -r "readfile('https://getcomposer.org/installer');"  | php \ 
     && mv composer.phar /usr/local/bin/composer \
-    && composer config -g repo.packagist composer https://packagist.phpcomposer.com
+    && composer config -g repo.packagist composer https://packagist.phpcomposer.com \
+    &&docker-php-ext-install pdo_mysql
 
 ## START SUPERVISOR
 COPY supervisord.conf /etc/supervisord.conf
 COPY supervisor.conf.d /etc/supervisor.conf.d
 COPY nginx.conf /etc/nginx/nginx.conf
+
 COPY start.sh /start.sh
 RUN chmod a+x /start.sh
 ENTRYPOINT [ "/start.sh"]
