@@ -75,6 +75,12 @@ Pool Definitions /usr/local/etc/php-fpm.d/
 
 `/start.sh` *主要用于运行supervisor，其它进程在supervisor里面配置*
 
+如果有一些在运行时需要运行一次，非守护进程类型的，可以复制这个文件，把命令加到`exec supervisord -c /xxxxxx`这条启动supervisor的命令前面。
+
+然后Dockerfile把它COPY 到根目录即可。如：`COPY start.sh /start.sh`
+
+基础镜像启动时，entryponit默认就是执行这个脚本。只要复制到对的路径，无需另外添加CMD命令或者ENTRYPOINT命令来执行它。
+
 `网站默认路径`:
 
  `/var/www/html`
