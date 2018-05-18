@@ -10,6 +10,46 @@
 
 - PHP：7.1
 
+    Installed PHP Modules
+
+    ```text
+    bcmath
+    Core
+    ctype
+    curl
+    date
+    dom
+    fileinfo
+    filter
+    ftp
+    hash
+    iconv
+    json
+    libxml
+    mbstring
+    mysqlnd
+    openssl
+    pcre
+    PDO
+    pdo_mysql
+    pdo_sqlite
+    Phar
+    posix
+    readline
+    Reflection
+    session
+    SimpleXML
+    SPL
+    sqlite3
+    standard
+    tokenizer
+    xml
+    xmlreader
+    xmlwriter
+    zlib
+
+    ```
+
 - Python： 2.7.15 / 3.6.5
 
 - Nginx: 1.14.0
@@ -38,6 +78,10 @@ Configuration File (php.ini) Path => /usr/local/etc/php
 Scan this dir for additional .ini files => /usr/local/etc/php/conf.d
 
 ```
+
+*如果需要安装PHP扩展插件使用`docker-php-ext-install plugin_name`安装相应插件*
+
+如：`docker-php-ext-install pdo_mysql`
 
 `Python`
 

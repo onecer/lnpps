@@ -343,7 +343,7 @@ RUN GPG_KEYS=B0F4253373F8F6F510D42178520A9993A1C052F8 \
 RUN php -r "readfile('https://getcomposer.org/installer');"  | php \ 
     && mv composer.phar /usr/local/bin/composer \
     && composer config -g repo.packagist composer https://packagist.phpcomposer.com \
-    &&docker-php-ext-install pdo_mysql
+    &&docker-php-ext-install pdo_mysql bcmath
 
 ## START SUPERVISOR
 COPY supervisord.conf /etc/supervisord.conf
