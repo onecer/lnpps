@@ -355,4 +355,5 @@ RUN chmod a+x /start.sh
 ENTRYPOINT [ "/start.sh"]
 
 EXPOSE 80
+EXPOSE 443
 EXPOSE 9001

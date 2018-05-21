@@ -62,7 +62,9 @@
 
 ## 开放端口
 
-- `80` Nginx端口，默认提供`/var/www/html`下的web服务
+- `80` HTTP协议端口，默认提供`/var/www/html`下的web服务
+
+- `443` HTTPS协议端口
 
 - `9000` PHP-FPM 服务端口
 
