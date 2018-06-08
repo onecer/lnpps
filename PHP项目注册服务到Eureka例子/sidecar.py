@@ -25,15 +25,16 @@ EUREKA_URL = 'http://127.0.0.1:8761'
 # 主机名
 HOSTNAME = "localhost"
 # 注册到Eureka的实例ID
+INSTANCE_ID = "{IP}:{PORT}".format(IP=SERVICE_IP, PORT=SERVICE_PORT)
 
 env_dict = os.environ
 
-SERVICE_NAME = SERVICE_NAME if not 'SERVICE_NAME' in env_dict.keys() else env_dict['SERVICE_NAME']
-SERVICE_IP = SERVICE_IP if not 'SERVICE_IP' in env_dict.keys() else env_dict['SERVICE_IP']
-SERVICE_PORT = SERVICE_PORT if not 'SERVICE_PORT' in env_dict.keys() else env_dict['SERVICE_PORT']
-EUREKA_URL = EUREKA_URL if not 'EUREKA_URL' in env_dict.keys() else env_dict['EUREKA_URL']
-HOSTNAME = HOSTNAME if not 'HOSTNAME' in env_dict.keys() else env_dict['HOSTNAME']
-INSTANCE_ID = INSTANCE_ID if not 'INSTANCE_ID' in env_dict.keys() else env_dict['INSTANCE_ID']
+SERVICE_NAME = SERVICE_NAME if 'SERVICE_NAME' not in env_dict.keys() else env_dict['SERVICE_NAME']
+SERVICE_IP = SERVICE_IP if 'SERVICE_IP' not in env_dict.keys() else env_dict['SERVICE_IP']
+SERVICE_PORT = SERVICE_PORT if 'SERVICE_PORT' not in env_dict.keys() else env_dict['SERVICE_PORT']
+EUREKA_URL = EUREKA_URL if 'EUREKA_URL' not in env_dict.keys() else env_dict['EUREKA_URL']
+HOSTNAME = HOSTNAME if 'HOSTNAME' not in env_dict.keys() else env_dict['HOSTNAME']
+INSTANCE_ID = INSTANCE_ID if 'INSTANCE_ID' not in env_dict.keys() else env_dict['INSTANCE_ID']
 
 loop = asyncio.get_event_loop()
 

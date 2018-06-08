@@ -6,6 +6,8 @@
 
 [Docker Registry doubleshit/lnpps](https://hub.docker.com/r/doubleshit/lnpps/)
 
+镜像操作系统基于Alpine 3.4 *[Alpine_Linux_package_management](http://wiki.alpinelinux.org/wiki/Alpine_Linux_package_management)*
+
 ## 环境
 
 - PHP：7.1
