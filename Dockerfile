@@ -342,7 +342,7 @@ RUN GPG_KEYS=B0F4253373F8F6F510D42178520A9993A1C052F8 \
 ## INSTALL COMPOSER && PHP EXT
 RUN php -r "readfile('https://getcomposer.org/installer');"  | php \ 
     && mv composer.phar /usr/local/bin/composer \
-    && composer config -g repo.packagist composer https://packagist.phpcomposer.com \
+    && composer config -g repo.packagist composer https://packagist.laravel-china.org \
     &&docker-php-ext-install pdo_mysql bcmath
 
 ## START SUPERVISOR

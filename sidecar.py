@@ -23,9 +23,9 @@ SERVICE_PORT = 9999
 # Eureka Server地址
 EUREKA_URL = 'http://127.0.0.1:8761'
 # 主机名
-HOSTNAME = "localhost"
+#HOSTNAME = "localhost"
 # 注册到Eureka的实例ID
-INSTANCE_ID = "{IP}:{PORT}".format(IP=SERVICE_IP, PORT=SERVICE_PORT)
+#INSTANCE_ID = "{IP}:{PORT}".format(IP=SERVICE_IP, PORT=SERVICE_PORT)
 
 env_dict = os.environ
 
@@ -33,8 +33,8 @@ SERVICE_NAME = SERVICE_NAME if 'SERVICE_NAME' not in env_dict.keys() else env_di
 SERVICE_IP = SERVICE_IP if 'SERVICE_IP' not in env_dict.keys() else env_dict['SERVICE_IP']
 SERVICE_PORT = SERVICE_PORT if 'SERVICE_PORT' not in env_dict.keys() else env_dict['SERVICE_PORT']
 EUREKA_URL = EUREKA_URL if 'EUREKA_URL' not in env_dict.keys() else env_dict['EUREKA_URL']
-HOSTNAME = HOSTNAME if 'HOSTNAME' not in env_dict.keys() else env_dict['HOSTNAME']
-INSTANCE_ID = INSTANCE_ID if 'INSTANCE_ID' not in env_dict.keys() else env_dict['INSTANCE_ID']
+#HOSTNAME = HOSTNAME if 'HOSTNAME' not in env_dict.keys() else env_dict['HOSTNAME']
+#INSTANCE_ID = INSTANCE_ID if 'INSTANCE_ID' not in env_dict.keys() else env_dict['INSTANCE_ID']
 
 loop = asyncio.get_event_loop()
 

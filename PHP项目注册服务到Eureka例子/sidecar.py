@@ -2,6 +2,30 @@
 import os
 import asyncio
 from wasp_eureka import EurekaClient
+import socket
+import fcntl
+import struct
+
+
+def get_host_ip():
+    try:
+        s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+        s.connect(('8.8.8.8', 80))
+        ip = s.getsockname()[0]
+    finally:
+        s.close()
+
+    return ip
+
+
+def get_ip_address(ifname):
+    s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+    return socket.inet_ntoa(fcntl.ioctl(
+        s.fileno(),
+        0x8915,  # SIOCGIFADDR
+        struct.pack('256s', ifname[:15])
+    )[20:24])
+
 
 """
 这里配置注册到Eureka的服务信息。
@@ -17,15 +41,15 @@ from wasp_eureka import EurekaClient
 # 服务名
 SERVICE_NAME = 'JOKE-SERVICE'
 # 服务IP
-SERVICE_IP = '127.0.0.1'
+SERVICE_IP = socket.gethostbyname(socket.gethostname())
 # 服务开放端口
 SERVICE_PORT = 9999
 # Eureka Server地址
-EUREKA_URL = 'http://127.0.0.1:8761'
+EUREKA_URL = 'http://192.168.99.100:7070'
 # 主机名
-HOSTNAME = "localhost"
+# HOSTNAME = "localhost"
 # 注册到Eureka的实例ID
-INSTANCE_ID = "{IP}:{PORT}".format(IP=SERVICE_IP, PORT=SERVICE_PORT)
+# INSTANCE_ID = "{IP}:{PORT}".format(IP=SERVICE_IP, PORT=SERVICE_PORT)
 
 env_dict = os.environ
 
@@ -33,18 +57,18 @@ SERVICE_NAME = SERVICE_NAME if 'SERVICE_NAME' not in env_dict.keys() else env_di
 SERVICE_IP = SERVICE_IP if 'SERVICE_IP' not in env_dict.keys() else env_dict['SERVICE_IP']
 SERVICE_PORT = SERVICE_PORT if 'SERVICE_PORT' not in env_dict.keys() else env_dict['SERVICE_PORT']
 EUREKA_URL = EUREKA_URL if 'EUREKA_URL' not in env_dict.keys() else env_dict['EUREKA_URL']
-HOSTNAME = HOSTNAME if 'HOSTNAME' not in env_dict.keys() else env_dict['HOSTNAME']
-INSTANCE_ID = INSTANCE_ID if 'INSTANCE_ID' not in env_dict.keys() else env_dict['INSTANCE_ID']
+# HOSTNAME = HOSTNAME if 'HOSTNAME' not in env_dict.keys() else env_dict['HOSTNAME']
+# INSTANCE_ID = INSTANCE_ID if 'INSTANCE_ID' not in env_dict.keys() else env_dict['INSTANCE_ID']
 
 loop = asyncio.get_event_loop()
 
 eureka = EurekaClient(app_name=SERVICE_NAME,
                       ip_addr=SERVICE_IP,
                       port=SERVICE_PORT,
-                      hostname=HOSTNAME,
+ #                     hostname=HOSTNAME,
                       eureka_url=EUREKA_URL,
-                      loop=loop,
-                      instance_id=INSTANCE_ID)
+                      loop=loop)
+ #                     instance_id=INSTANCE_ID)
 
 async def main():
     await eureka.register()
