@@ -1,4 +1,4 @@
-FROM php:7.1-fpm-alpine
+FROM php:5.6-fpm-alpine
 # BASE ON https://github.com/docker-library/php 
 # INSTALL PYTHON2.7
 # EDIT BY YYY

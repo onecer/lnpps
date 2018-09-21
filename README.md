@@ -10,7 +10,7 @@
 
 ## 环境
 
-- PHP：7.1
+- PHP：5.6
 
     Installed PHP Modules
 
